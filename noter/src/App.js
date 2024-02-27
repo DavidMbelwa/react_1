@@ -1,12 +1,20 @@
-import Navigation from './Navbar'
-import Hero from './hero';
+
+import Home from "./pages/home";
+import Sign_in from "./pages/sign-in";
+import Sign_up from "./pages/sign-up";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
-    <body className="App container-fluid vh-100 bg-primary">
-      <Navigation />
-      <Hero />
-    </body>
+    <Router> 
+      <body className="App">
+          <Routes>
+            <Route path="/" element={<Home/>} />
+            <Route path="./pages/sign-in" element={<Sign_in/>} />
+            <Route path="./pages/sign-up" element={<Sign_up/>} />
+          </Routes>
+      </body>
+    </Router>
   );
 }
 
