@@ -1,11 +1,11 @@
-import Hero from "../components/hero";
-import Navbar from "../components/Navbar";
+import Hero_home from "../components/heroHome";
+import Navbar from "../components/navHome";
 
 const Home = () => {
     return (
-        <body className="container-fluid vh-100 bg-primary">
+        <body className="container-fluid d-flex flex-column align-items-center vh-100 bg-primary">
             <Navbar/>
-            <Hero/>
+            <Hero_home/>
         </body>
         );
     }

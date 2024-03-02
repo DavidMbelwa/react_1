@@ -1,9 +1,9 @@
-import Navbar from "../components/Navbar";
+import SignUpNav from "../components/navSignUp";
 
 const Sign_up = () => {
     return ( 
         <body>
-            <Navbar />
+            <SignUpNav />
         </body>
      );
 }
