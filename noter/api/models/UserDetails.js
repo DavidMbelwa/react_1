@@ -3,7 +3,7 @@ const Mongoose = require("mongoose");
 
 
 // Creating a Users Schema
-const UserSchema = new Mongoose.Schema(
+const UserDetailSchema = new Mongoose.Schema(
     {
         user_name: {
             type: String,
@@ -22,5 +22,5 @@ const UserSchema = new Mongoose.Schema(
 
 
 // Exporting the users Schema
-const userDetailModel = Mongoose.model("user_details", UserSchema);
+const userDetailModel = Mongoose.model("user_details", UserDetailSchema);
 module.exports = userDetailModel;

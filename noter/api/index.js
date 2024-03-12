@@ -1,60 +1,37 @@
+// Packages
 const Express = require("express");
 const Mongoose = require("mongoose");
 const cors = require("cors");
 const app = Express();
+require("dotenv").config();
 
 
+// Middleware
+app.use(Express.json()); // JSON parser
+app.use(cors());
 
 
+// Connections to the api
+const database_1 = "users";
+const userRoutes = require("./routes/userRoutes");
+// const database_2 = "user_profiles";
+// const UserProfileModel = require("./models/UserProfiles");
 
 
+// The GET request for all users (user_details)
+app.use(userRoutes);
 
 
-
-
-// The GET request for all users
-app.get("/getUsers", (req, res) => {
-    UserDetailModel.find({}, (err, result) => {
-        if (err) {
-            res.json(err);
-        } else {
-            res.json(result);
-        };
+// Connecting to the user details database
+Mongoose.connect(process.env.CONNECTION_STRING, {dbName: database_1})
+    .then(() => {
+        app.listen(process.env.PORT, () => {
+            console.log("Server running successful")
+        });
     })
-});
-
-
-// The GET request for a single user
-app.get("/users/:id", (req, res) => {
-    UserDetailModel.findById({}, (err, result) => {
-        if (err) {
-            res.json(err);
-        } else {
-            res.json(result);
-        };
+    .catch((error) => {
+        console.log(error)
     });
-});
 
 
 
-// The POST request
-app.post("newUser", async (req, res) => {
-    const user = req.body
-    const newUser = new UserDetailModel(user);
-    await newUser.save();
-
-    res.json(user)
-});
-
-
-// The PUT request
-// app.put()
-
-
-// The DELETE request
-// app.delete()
-
-
-app.listen(3001, () => {
-    console.log("Server running Successful")
-})
