@@ -2,21 +2,13 @@ const Express = require("express");
 const Mongoose = require("mongoose");
 const cors = require("cors");
 const app = Express();
-const CONNECTION_STRING = "mongodb+srv://mukajangadavid:B2c-8675437@cluster0.zzsvmdc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
-
-const UserDetailModel = require("./models/users");
 
 
 
-// Parsing the incoming json POST requests 
-app.use(Express.json);
 
 
-app.use(cors)
 
 
-// Connecting to the database
-Mongoose.connect(CONNECTION_STRING, {dbName: "user_details"});
 
 
 
