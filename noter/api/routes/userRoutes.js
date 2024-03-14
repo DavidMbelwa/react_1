@@ -1,48 +1,25 @@
 const Express = require("express");
 const router = Express.Router();
-const UserDetailModel = require("../models/UserDetails");
-
+const { newUser, allUsers, singleUser, updateUser, deleteUser } = require("../controllers/userControllers")
 
 // All Users
-router.get("/getUsers", (req, res) => {
-    UserDetailModel.find({}).then((err, result) => {
-        if (err) {
-            res.json(err);
-        } else {
-            res.json(result);
-        };
-    });
-})
+router.get("/users", allUsers)
 
 
 // Single User
-router.get("/users/:id", (req, res) => {
-    UserDetailModel.findById({}).then((err, result) => {
-        if (err) {
-            res.json(err);
-        } else {
-            res.json(result);
-        };
-    });
-})
+router.get("/users/:id", singleUser)
 
 
 // New User
-router.post("/newUser", async (req, res) => {
-    const user = req.body
-    const newUser = new UserDetailModel(user);
-    await newUser.save();
-
-    res.json(user)
-})
+router.post("/newUser", newUser);
 
 
 // Update User details
-//router.patch()
+router.patch("/user/:id", updateUser)
 
 
 //Delete User Information
-//router.delete()
+router.delete("/user/:id", deleteUser)
 
 module.exports = router;
 

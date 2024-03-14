@@ -25,6 +25,8 @@ app.use(userRoutes);
 // Connecting to the user details database
 Mongoose.connect(process.env.CONNECTION_STRING, {dbName: database_1})
     .then(() => {
+
+        // Listening to the port.
         app.listen(process.env.PORT, () => {
             console.log("Server running successful")
         });
